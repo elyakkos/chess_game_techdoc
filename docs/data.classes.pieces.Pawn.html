@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module data.classes.pieces.Pawn</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="data.html" class="white">data</a>.<a href="data.classes.html" class="white">classes</a>.<a href="data.classes.pieces.html" class="white">pieces</a>.Pawn</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cgnevn%5Conedrive%5C%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%5Cpython-chess%5Cdata%5Cclasses%5Cpieces%5Cpawn.py">c:\users\gnevn\onedrive\рабочий стол\python-chess\data\classes\pieces\pawn.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="pygame.html">pygame</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="data.classes.Piece.html#Piece">data.classes.Piece.Piece</a>(<a href="builtins.html#object">builtins.object</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="data.classes.pieces.Pawn.html#Pawn">Pawn</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Pawn">class <strong>Pawn</strong></a>(<a href="data.classes.Piece.html#Piece">data.classes.Piece.Piece</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Pawn">Pawn</a>(pos,&nbsp;color,&nbsp;board)<br>
+&nbsp;<br>
+Класс,&nbsp;представляющий&nbsp;шахматную&nbsp;пешку.<br>
+&nbsp;<br>
+Наследует&nbsp;общие&nbsp;методы&nbsp;и&nbsp;атрибуты&nbsp;от&nbsp;класса&nbsp;<a href="data.classes.Piece.html#Piece">Piece</a>.<br>
+&nbsp;<br>
+Атрибуты:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(tuple):&nbsp;Координаты&nbsp;позиции&nbsp;фигуры&nbsp;(x,&nbsp;y).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;(str):&nbsp;Цвет&nbsp;фигуры&nbsp;('white'&nbsp;или&nbsp;'black').<br>
+&nbsp;&nbsp;&nbsp;&nbsp;board&nbsp;(Board):&nbsp;Ссылка&nbsp;на&nbsp;объект&nbsp;шахматной&nbsp;доски.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;img&nbsp;(pygame.Surface):&nbsp;Изображение&nbsp;пешки.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;notation&nbsp;(str):&nbsp;Обозначение&nbsp;фигуры&nbsp;(пустое&nbsp;для&nbsp;пешки).<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="data.classes.pieces.Pawn.html#Pawn">Pawn</a></dd>
+<dd><a href="data.classes.Piece.html#Piece">data.classes.Piece.Piece</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Pawn-__init__"><strong>__init__</strong></a>(self, pos, color, board)</dt><dd><span class="code">Инициализирует&nbsp;пешку.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(tuple):&nbsp;Начальная&nbsp;позиция&nbsp;фигуры&nbsp;(x,&nbsp;y).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;(str):&nbsp;Цвет&nbsp;фигуры&nbsp;('white'&nbsp;или&nbsp;'black').<br>
+&nbsp;&nbsp;&nbsp;&nbsp;board&nbsp;(Board):&nbsp;Ссылка&nbsp;на&nbsp;объект&nbsp;шахматной&nbsp;доски.</span></dd></dl>
+
+<dl><dt><a name="Pawn-attacking_squares"><strong>attacking_squares</strong></a>(self, board)</dt><dd><span class="code">Определяет&nbsp;клетки,&nbsp;находящиеся&nbsp;под&nbsp;атакой&nbsp;пешки.<br>
+&nbsp;<br>
+Пешка&nbsp;атакует&nbsp;только&nbsp;диагонально,&nbsp;даже&nbsp;если&nbsp;там&nbsp;нет&nbsp;фигур.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;board&nbsp;(Board):&nbsp;Текущая&nbsp;шахматная&nbsp;доска.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;Список&nbsp;клеток,&nbsp;находящихся&nbsp;под&nbsp;атакой&nbsp;пешки.</span></dd></dl>
+
+<dl><dt><a name="Pawn-get_moves"><strong>get_moves</strong></a>(self, board)</dt><dd><span class="code">Получает&nbsp;доступные&nbsp;ходы&nbsp;пешки&nbsp;с&nbsp;учетом&nbsp;блокировок&nbsp;и&nbsp;взятий.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;board&nbsp;(Board):&nbsp;Текущая&nbsp;шахматная&nbsp;доска.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;Список&nbsp;клеток,&nbsp;на&nbsp;которые&nbsp;пешка&nbsp;может&nbsp;двигаться&nbsp;или&nbsp;бить&nbsp;фигуры.</span></dd></dl>
+
+<dl><dt><a name="Pawn-get_possible_moves"><strong>get_possible_moves</strong></a>(self, board)</dt><dd><span class="code">Получает&nbsp;возможные&nbsp;ходы&nbsp;пешки&nbsp;без&nbsp;учета&nbsp;блокировок&nbsp;и&nbsp;взятий.<br>
+&nbsp;<br>
+Пешка&nbsp;может&nbsp;двигаться&nbsp;на&nbsp;одну&nbsp;или&nbsp;две&nbsp;клетки&nbsp;вперед&nbsp;(если&nbsp;не&nbsp;двигалась&nbsp;ранее).<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;board&nbsp;(Board):&nbsp;Текущая&nbsp;шахматная&nbsp;доска.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;Список&nbsp;клеток,&nbsp;на&nbsp;которые&nbsp;пешка&nbsp;может&nbsp;двигаться.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="data.classes.Piece.html#Piece">data.classes.Piece.Piece</a>:<br>
+<dl><dt><a name="Pawn-get_valid_moves"><strong>get_valid_moves</strong></a>(self, board)</dt><dd><span class="code">Получает&nbsp;список&nbsp;допустимых&nbsp;ходов&nbsp;фигуры&nbsp;с&nbsp;учетом&nbsp;шаха.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;board&nbsp;(Board):&nbsp;Объект&nbsp;доски.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;Список&nbsp;клеток,&nbsp;на&nbsp;которые&nbsp;фигура&nbsp;может&nbsp;двигаться&nbsp;без&nbsp;шаха.</span></dd></dl>
+
+<dl><dt><a name="Pawn-move"><strong>move</strong></a>(self, board, square, force=False)</dt><dd><span class="code">Перемещает&nbsp;фигуру&nbsp;на&nbsp;указанную&nbsp;клетку.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;board&nbsp;(Board):&nbsp;Объект&nbsp;доски.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;square&nbsp;(Square):&nbsp;Клетка,&nbsp;на&nbsp;которую&nbsp;нужно&nbsp;переместить&nbsp;фигуру.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;force&nbsp;(bool):&nbsp;Принудительное&nbsp;выполнение&nbsp;хода&nbsp;(игнорирует&nbsp;проверку).<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;True,&nbsp;если&nbsp;ход&nbsp;выполнен,&nbsp;иначе&nbsp;False.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="data.classes.Piece.html#Piece">data.classes.Piece.Piece</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
