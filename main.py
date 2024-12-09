@@ -1,137 +1,129 @@
 import pygame
 from data.classes.Board import Board
 
-# Инициализация Pygame
-pygame.init()
-
-# Параметры окна
-WINDOW_SIZE = (600, 600)
-"""tuple: Размеры окна игры (ширина, высота) в пикселях."""
-
-screen = pygame.display.set_mode(WINDOW_SIZE)
-"""pygame.Surface: Основное окно игры."""
-
-pygame.display.set_caption("Chess Game")
-"""str: Заголовок окна игры."""
-
-# Цвета
-WHITE = (255, 255, 255)
-"""tuple: Белый цвет для фона (RGB)."""
-
-BLACK = (0, 0, 0)
-"""tuple: Черный цвет для текста (RGB)."""
-
-GRAY = (200, 200, 200)
-"""tuple: Серый цвет для кнопок (RGB)."""
-
-# Шрифт
-font = pygame.font.Font(None, 36)
-"""pygame.Font: Шрифт для текста в игре."""
-
-# Инициализация доски
-board = Board(WINDOW_SIZE[0], WINDOW_SIZE[1])
-"""Board: Игровая шахматная доска."""
-
-def draw_text(surface, text, color, x, y):
+class Game:
     """
-    Отображает текст на экране.
+    Класс Game управляет основным игровым процессом, включая главное меню и игровой цикл.
 
-    Args:
-        surface (pygame.Surface): Поверхность, на которой рисуется текст.
-        text (str): Текст для отображения.
-        color (tuple): Цвет текста в формате RGB.
-        x (int): Координата X для текста.
-        y (int): Координата Y для текста.
+    Attributes:
+        WINDOW_SIZE (tuple): Размеры окна игры (ширина, высота).
+        screen (pygame.Surface): Поверхность для отрисовки.
+        WHITE (tuple): Цвет для белого.
+        BLACK (tuple): Цвет для чёрного.
+        GRAY (tuple): Цвет для серого.
+        font (pygame.font.Font): Шрифт для отображения текста.
+        board (Board): Объект класса Board для управления шахматной доской.
     """
-    text_surface = font.render(text, True, color)
-    surface.blit(text_surface, (x, y))
 
-def main_menu():
-    """
-    Отображает главное меню игры с кнопками "Начать игру" и "Выход".
+    def __init__(self):
+        """
+        Инициализирует объект Game, задавая параметры окна, цвета, шрифт и шахматную доску.
+        """
+        pygame.init()
+        self.WINDOW_SIZE = (600, 600)
+        self.screen = pygame.display.set_mode(self.WINDOW_SIZE)
+        pygame.display.set_caption("Chess Game")
 
-    Обработка событий:
-        - Кнопка "Начать игру" начинает игру.
-        - Кнопка "Выход" завершает программу.
+        # Цвета
+        self.WHITE = (255, 255, 255)
+        self.BLACK = (0, 0, 0)
+        self.GRAY = (200, 200, 200)
 
-    Меню работает в отдельном цикле, пока игрок не выберет действие.
-    """
-    menu_running = True
-    while menu_running:
-        screen.fill(WHITE)
-        
-        # Заголовок
-        draw_text(screen, "Chess Game", BLACK, WINDOW_SIZE[0] // 2 - 80, 100)
-        
-        # Кнопки
-        play_button = pygame.Rect(WINDOW_SIZE[0] // 2 - 100, 200, 200, 50)
-        quit_button = pygame.Rect(WINDOW_SIZE[0] // 2 - 100, 300, 200, 50)
-        
-        pygame.draw.rect(screen, GRAY, play_button)
-        pygame.draw.rect(screen, GRAY, quit_button)
-        
-        draw_text(screen, "Начать игру", BLACK, WINDOW_SIZE[0] // 2 - 70, 210)
-        draw_text(screen, "Выход", BLACK, WINDOW_SIZE[0] // 2 - 40, 310)
-        
-        pygame.display.update()
-        
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if play_button.collidepoint(event.pos):
-                    menu_running = False
-                elif quit_button.collidepoint(event.pos):
+        # Шрифт
+        self.font = pygame.font.Font(None, 36)
+
+        # Доска
+        self.board = Board(self.WINDOW_SIZE[0], self.WINDOW_SIZE[1])
+
+    def draw_text(self, surface, text, color, x, y):
+        """
+        Отображает текст на указанной поверхности.
+
+        Args:
+            surface (pygame.Surface): Поверхность, на которой будет отображаться текст.
+            text (str): Текст для отображения.
+            color (tuple): Цвет текста (RGB).
+            x (int): Координата X текста.
+            y (int): Координата Y текста.
+        """
+        text_surface = self.font.render(text, True, color)
+        surface.blit(text_surface, (x, y))
+
+    def main_menu(self):
+        """
+        Отображает главное меню игры с кнопками "Начать игру" и "Выход".
+        """
+        menu_running = True
+        while menu_running:
+            self.screen.fill(self.WHITE)
+            self.draw_text(self.screen, "Chess Game", self.BLACK, self.WINDOW_SIZE[0] // 2 - 80, 100)
+
+            # Кнопки меню
+            play_button = pygame.Rect(self.WINDOW_SIZE[0] // 2 - 100, 200, 200, 50)
+            quit_button = pygame.Rect(self.WINDOW_SIZE[0] // 2 - 100, 300, 200, 50)
+
+            pygame.draw.rect(self.screen, self.GRAY, play_button)
+            pygame.draw.rect(self.screen, self.GRAY, quit_button)
+
+            self.draw_text(self.screen, "Начать игру", self.BLACK, self.WINDOW_SIZE[0] // 2 - 70, 210)
+            self.draw_text(self.screen, "Выход", self.BLACK, self.WINDOW_SIZE[0] // 2 - 40, 310)
+
+            pygame.display.update()
+
+            # Обработка событий
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if play_button.collidepoint(event.pos):
+                        menu_running = False
+                    elif quit_button.collidepoint(event.pos):
+                        pygame.quit()
+                        exit()
 
-def game_loop():
-    """
-    Основной игровой цикл.
+    def game_loop(self):
+        """
+        Основной игровой цикл, который управляет процессом игры, обработкой событий и отрисовкой.
+        """
+        running = True
+        while running:
+            mx, my = pygame.mouse.get_pos()
 
-    В цикле обрабатываются следующие события:
-        - Движения мыши.
-        - Нажатия кнопок мыши.
-        - Проверка состояния игры на шах и мат.
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        self.board.handle_click(mx, my)
 
-    Также обновляется заголовок окна с указанием текущего игрока или победителя.
-    """
-    running = True
-    while running:
-        mx, my = pygame.mouse.get_pos()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            # Проверка состояния игры
+            if self.board.is_in_checkmate('black'):
+                pygame.display.set_caption("Chess Game - Белые победили!")
+                print("Белые победили!")
                 running = False
-            elif event.type == pygame.MOUSEBUTTONDOWN: 
-                if event.button == 1:
-                    board.handle_click(mx, my)
+            elif self.board.is_in_checkmate('white'):
+                pygame.display.set_caption("Chess Game - Черные победили!")
+                print("Черные победили!")
+                running = False
+            else:
+                current_turn = "Ход: Белые" if self.board.turn == "white" else "Ход: Черные"
+                pygame.display.set_caption(f"Chess Game - {current_turn}")
 
-        # Проверка на мат
-        if board.is_in_checkmate('black'):
-            pygame.display.set_caption("Chess Game - Белые победили!")
-            print("Белые победили!")
-            running = False
-        elif board.is_in_checkmate('white'):
-            pygame.display.set_caption("Chess Game - Черные победили!")
-            print("Черные победили!")
-            running = False
-        else:
-            # Обновление заголовка окна в зависимости от текущего хода
-            current_turn = "Ход: Белые" if board.turn == "white" else "Ход: Черные"
-            pygame.display.set_caption(f"Chess Game - {current_turn}")
+            # Отрисовка доски и интерфейса
+            self.screen.fill(self.WHITE)
+            self.board.draw(self.screen)
+            pygame.display.update()
 
-        # Отрисовка игры
-        screen.fill(WHITE)
-        board.draw(screen)
-        pygame.display.update()
+    def run(self):
+        """
+        Запускает игру, начиная с главного меню и переходя к игровому циклу.
+        """
+        self.main_menu()
+        self.game_loop()
+        pygame.quit()
 
+# Запуск игры
 if __name__ == "__main__":
-    """
-    Точка входа в программу.
-
-    Сначала отображается главное меню (`main_menu()`), затем запускается основной игровой цикл (`game_loop()`).
-    """
-    main_menu()  # Показываем главное меню
-    game_loop()  # Запускаем игровой цикл
-    pygame.quit()
+    game = Game()
+    game.run()
