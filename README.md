@@ -14,10 +14,10 @@ Chess Game — это классическая шахматная игра, ра
 Для запуска игры необходим установленный Python версии 3.x и библиотека Pygame. Выполните следующие шаги:
 
 1. Скачайте или клонируйте репозиторий:
-    - Скачайте ZIP-архив с [репозитория](https://github.com/your-repo/chess-game.git) и распакуйте его.  
+    - Скачайте ZIP-архив с [репозитория](https://github.com/elyakkos/chess_game_techdoc) и распакуйте его.  
     - Либо выполните в командной строке:
       ```cmd
-      git clone https://github.com/your-repo/chess-game.git
+      git clone https://github.com/elyakkos/chess_game_techdoc
       cd chess-game
       ```
 
@@ -54,3 +54,7 @@ Chess Game — это классическая шахматная игра, ра
 
 ## **Лицензия**
 Этот проект лицензирован по лицензии MIT. Подробнее см. в файле LICENSE.
+=======
+# Сhess Game
+### авторы: Костылева Э.П., Васильева Е.Д. 3 курс ИВТ
+>>>>>>> b7540cf399d01844cbbc92a9a91237aa1cb96342
